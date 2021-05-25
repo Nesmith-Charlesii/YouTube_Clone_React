@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
+import SearchBar from './SearchBar/searchBar';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            videoId: ''
+        }
     }
 
     render() {
         return (
             <div className="container-fluid">
-                <h1>Testing</h1>
+                <div className="search-header">
+                    <SearchBar />
+                </div>
             </div>
         )
     }

@@ -1,13 +1,32 @@
 import React from 'react';
 import useSearchForm from '../CustomHooks/customHooks';
-//import axios from 'axios';
+import axios from 'axios';
 import './searchBar.css'
 
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
     const Submittal = () => {
         alert(`Searching for ${inputs.search}`)
+        getvideo(inputs.search)
+    }
+    const getvideo = async(searchTerm) => {
+        try{
+            let {data} = await axios.get('https://www.googleapis.com/youtube/v3/search',{
+                params:{
+                    q:searchTerm,
+                    key:props.api
+                }
+
+            })
+            console.log(data)               
+            
+
+        }
+
+        catch(e){
+
+        }
     }
 
     const {inputs, handleChange, handleSubmit} = useSearchForm(Submittal);

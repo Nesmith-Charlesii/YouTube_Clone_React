@@ -33,7 +33,7 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <div className="search-header">
-                    <SearchBar />
+                    <SearchBar api={this.state.api}/>
                 </div>
                 <div className="row d-flex align-items-center">
                     <div className="video-player-wrapper col-8">

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 const useSearchForm = (callback) => {
     const [inputs, setInputs] = useState({});

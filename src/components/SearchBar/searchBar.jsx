@@ -1,22 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
+import useSearchForm from '../CustomHooks/customHooks';
+import './searchBar.css'
 
 
-const SearchBar = (props) => {
-    const [input, setInput] = useState('');
+const SearchBar = () => {
 
-    const handleChange = (event) => {
-        console.log(event.target.value);
-        setInput({
-            [event.targe.name]: event.target.value
-        })
+    const Submittal = () => {
+        alert(`Searching for ${inputs.search}`)
     }
 
+    const {inputs, handleChange, handleSubmit} = useSearchForm(Submittal);
+
     return (
-        <form>
-            <div className="form-group">
-                <input className="form-control" type="text" name="input" id="input" onChange={(event) => handleChange(event)} value={input} placeholder="Search..." />
-            </div>
-        </form>
+        <div className="form">
+            <form onSubmit = {handleSubmit}>
+                <div className="form-group d-flex flex-row">
+                    <input className="form-control form-rounded" type="text" name="search" onChange={handleChange} value={inputs.search} placeholder="Search..." />
+                    <button className="mx-4" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

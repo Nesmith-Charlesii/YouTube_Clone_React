@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SearchBar from './SearchBar/searchBar';
 import 'bootstrap/dist/css/bootstrap.css';
+import './app.css';
 
 class App extends Component {
     constructor(props) {

@@ -1,12 +1,13 @@
 .container-fluid {
     padding-left: 0;
     padding-right: 0;
+    overflow-x: hidden;
 }
 
 .search-header {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 1; */
     width: 100%;
     height: 70px;
     display: flex;
@@ -14,4 +15,21 @@
     align-items: center;
     border-bottom: 1px solid black;
     background-color: rgb(40,40,40);
+}
+
+.video-player-wrapper {
+    width: 60vw;
+}
+
+.video-player-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.related-videos-container {
+    display: flex;
+    justify-content: center;
 }

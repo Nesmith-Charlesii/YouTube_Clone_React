@@ -1,13 +1,13 @@
 import React from 'react';
+import './videoPlayer.css';
 
 const VideoPlayer = () => {
+    
     return (
-        <div className="video-player">
-            <iframe title="view-player" id="ytplayer" type="text/html" width="640" height="360"
-            src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-            frameborder="0">
-            </iframe>
-        </div>
+        <iframe title="view-player" id="ytplayer" type="text/html" 
+        src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+        frameborder="1">
+        </iframe>
     )
 }
 

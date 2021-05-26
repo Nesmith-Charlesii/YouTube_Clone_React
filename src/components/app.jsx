@@ -5,21 +5,24 @@ import SearchBar from './SearchBar/searchBar';
 //import VideoPlayer from './VideoPlayer/videoPlayer';
 import './app.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
+import apiKey from '../api';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             allVideos: [],
-            videoId: ''
+            videoId: '',
+            api:apiKey
         }
     }
 
-    getAllVideos = async () => {
+    getRelatedVideos = async () => {
         try {
-            let {data} = await axios.get('')
+            let {data} = await axios.get('http://127.0.0.1:8000/2ys9IS5r9yA')
             this.setState({allVideos: data})
             console.log(this.state.allVideos)
+            console.log(`run out`);
         }
         catch(ex) {
             alert(`Whoops! ${ex} Looks like we're having some technical difficulties. Try again later`)

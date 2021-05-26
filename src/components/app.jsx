@@ -5,13 +5,15 @@ import SearchBar from './SearchBar/searchBar';
 //import VideoPlayer from './VideoPlayer/videoPlayer';
 import './app.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
+import apiKey from '../api';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             allVideos: [],
-            videoId: ''
+            videoId: '',
+            api:apiKey
         }
     }
 

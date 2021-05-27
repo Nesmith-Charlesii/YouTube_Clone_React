@@ -4,17 +4,20 @@ import axios from 'axios';
 import SearchBar from './SearchBar/searchBar';
 import './app.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
+import VideoList from './VideoList/videolist';
 import apiKey from '../api';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.startVideo = this.startVideo.bind()
+        this.startVideo = this.startVideo.bind(this)
+        this.processSearch = this.processSearch.bind(this)
         this.state = {
             allVideos: [],
             searchResults:[],
             videoId: '',
-            api:apiKey
+            api:apiKey,
+            renderType: 'home'
         }
     }
 
@@ -34,11 +37,52 @@ class App extends Component {
         }
     }
 
+    processSearch(searchResults) {
+        console.log("searchResults", searchResults);
+        this.setState({searchResults:searchResults.items, renderType: "search"})
+    }
+
     render() {
+
+        if(this.state.renderType === 'video') {
+            return (
+                <div className="container-fluid">
+                    <div className="search-header">
+                        <SearchBar api={this.state.api} processSearch= {this.processSearch} />
+                    </div>
+                    <div className="row">
+                        <div className = "col-8">
+                            <div className="video-player-container">
+                                <VideoPlayer/>
+                            </div>
+                        </div>
+                        <div className="related-videos-container col-4">
+                            <h1>related videos</h1>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else if(this.state.renderType === 'search') {
+            return (
+                <div className="container-fluid">
+                    <div className="search-header">
+                        <SearchBar api={this.state.api} processSearch= {this.processSearch} />
+                    </div>
+                    <div className="row">
+                        <div className = "col-8">
+                            <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
+                        </div>
+                        <div className="related-videos-container col-4">
+                            <h1>related videos</h1>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
         return (
             <div className="container-fluid">
                 <div className="search-header">
-                    <SearchBar api={this.state.api}/>
+                    <SearchBar api={this.state.api} processSearch= {this.processSearch} />
                 </div>
                 <div className="row">
                     <div className = "col-8">

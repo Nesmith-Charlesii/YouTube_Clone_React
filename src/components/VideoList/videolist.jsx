@@ -7,7 +7,7 @@ function VideoList(props){
                     <tr>
                         <td>
                             <a href='#' onClick={(e) => props.startVideo(e,video)}>
-                                <img src={video.snippet.thumbnails.default.url}/>
+                                <img src={video.snippet.thumbnails.default.url} alt="video"  width="360" />
                             </a>
                         </td>
                         <td>

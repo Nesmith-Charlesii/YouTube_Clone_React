@@ -5,25 +5,26 @@ import './searchBar.css'
 
 
 const SearchBar = (props) => {
+    console.log(props)
 
     const Submittal = () => {
         alert(`Searching for ${inputs.search}`)
-        getvideo(inputs.search)
+        getvideo(inputs.search, props)
     }
-    const getvideo = async(searchTerm) => {
+    const getvideo = async(searchTerm, props) => {
         try{
             let {data} = await axios.get('https://www.googleapis.com/youtube/v3/search',{
                 params:{
-                    q:searchTerm,
+                    q:searchTerm, 
                     part:'snippet',
                     key:props.api,
-                    maxResults:15
+                    maxResults: 15
                 }
 
             })
-            console.log(data)               
+            console.log(props)
+            props.processSearch(data);
             
-
         }
 
         catch(e){

@@ -15,14 +15,27 @@ class App extends Component {
         this.state = {
             allVideos: [],
             searchResults:[],
-            videoId: '',
+            videoId: '44-Kx5ZZTsY',
             api:apiKey,
             renderType: 'home'
         }
     }
 
-    startVideo(video){
-        let a;
+    startVideo(event, video){
+        debugger;
+        if (video.id.kind === "youtube#video"){
+            this.setState(
+
+                {
+                    videoId:video.id.videoId,
+                    renderType:'video'
+                }
+            )
+        }
+        else{
+            console.log("please don't see me")
+        }
+        console.log(this.state)
     }
 
     getRelatedVideos = async () => {
@@ -43,6 +56,7 @@ class App extends Component {
     }
 
     render() {
+        
 
         if(this.state.renderType === 'video') {
             return (
@@ -53,7 +67,7 @@ class App extends Component {
                     <div className="row">
                         <div className = "col-8">
                             <div className="video-player-container">
-                                <VideoPlayer/>
+                                <VideoPlayer video={this.state.videoId}/>
                             </div>
                         </div>
                         <div className="related-videos-container col-4">
@@ -87,7 +101,8 @@ class App extends Component {
                 <div className="row">
                     <div className = "col-8">
                         <div className="video-player-container">
-                            <VideoPlayer/>
+                            
+                            <VideoPlayer video={this.state.videoId}/>
                         </div>
                     </div>
                     <div className="related-videos-container col-4">

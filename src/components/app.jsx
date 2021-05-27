@@ -25,14 +25,11 @@ class App extends Component {
         
         if (video.id.kind === "youtube#video"){
             let related = this.getRelatedVideos(video.id.videoId)
-            related = related.items;
-            debugger;
+            
             this.setState(
 
                 {
-                    videoId:video.id.videoId,
-                    renderType:'video',
-                    searchResults:related
+                    
                 }
             )
         }
@@ -42,7 +39,7 @@ class App extends Component {
         
     }
 
-    getRelatedVideos = async (videoId) => {
+    async getRelatedVideos(videoId) {
         try {
             let {data} = await axios.get('https://www.googleapis.com/youtube/v3/search',{
                 params:{
@@ -55,6 +52,11 @@ class App extends Component {
 
             })
             console.log("related",data);
+            this.setState({
+                searchResults:data.items,
+                renderType:'video',
+                videoId:videoId
+            })
             return (data);
         }
         catch(ex) {

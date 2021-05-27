@@ -1,6 +1,8 @@
 function VideoList(props){
 
     function buildList(video){
+        
+        if(video.snippet != undefined){
         return(
             <table>
                 <tbody>
@@ -20,7 +22,7 @@ function VideoList(props){
                     </tr>
                 </tbody>
             </table>
-        )
+        )}
 
     }
     console.log("videolist check",props.videos)

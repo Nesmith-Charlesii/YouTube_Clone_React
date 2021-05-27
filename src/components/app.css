@@ -1,7 +1,12 @@
+body {
+    background-color: rgb(25, 25, 25);
+}
+
 .container-fluid {
     padding-left: 0;
     padding-right: 0;
     overflow-x: hidden;
+    height: 100vh;
 }
 
 .search-header {
@@ -9,24 +14,24 @@
     top: 0;
     z-index: 1;
     width: 100%;
-    height: 70px;
+    height: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid black;
-    background-color: rgb(40,40,40);
-}
-
-.video-player-wrapper {
-    width: 60vw;
+    background-color: rgb(33,33,33);
 }
 
 .video-player-container {
+    position: relative;
+    top: 80px;
+    margin-left: 90px;
+    overflow: hidden;
+    padding-top: 56.25%;
     width: 100%;
-    height: 100vh;
+    height: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 }
 
 .related-videos-container {

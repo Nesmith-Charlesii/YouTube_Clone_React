@@ -1,4 +1,13 @@
 .form-rounded {
+    border: 1px solid rgb(50, 50, 50);
     border-radius: 2rem;
-    width: 25vw;
+    width: 32vw;
+    height: 34px;
+    background-color: rgb(20, 20, 20);
+    outline: none;
+    text-indent: 14px;
+}
+
+input::placeholder {
+    font-family: arial;
 }

@@ -3,12 +3,11 @@ import './videoPlayer.css';
 
 const VideoPlayer = () => {
 
+    // eslint-disable-next-line no-unused-vars
     const [videoId, setVideoId] = useState('44-Kx5ZZTsY')
     
     return (
-        <iframe title="view-player" id="ytplayer" type="text/html" width="640" height="360"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
-        frameborder="0">
+        <iframe className="responsive-iframe" title="view-player" id="ytplayer" type="text/html" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} frameborder="0">
         </iframe>
     )
 }

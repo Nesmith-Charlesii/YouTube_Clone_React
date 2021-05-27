@@ -35,13 +35,13 @@ class App extends Component {
                 <div className="search-header">
                     <SearchBar api={this.state.api}/>
                 </div>
-                <div className="row d-flex align-items-center">
-                    <div className="video-player-wrapper col-8">
-                        <div className="vide-player-container">
+                <div className="row">
+                    <div className = "col-6">
+                        <div className="video-player-container">
                             <VideoPlayer/>
                         </div>
                     </div>
-                    <div className="related-videos-container col-4">
+                    <div className="related-videos-container col-6">
                         <h1>related videos</h1>
                     </div>
                 </div>

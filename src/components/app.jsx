@@ -9,11 +9,17 @@ import apiKey from '../api';
 class App extends Component {
     constructor(props) {
         super(props);
+        this.startVideo = this.startVideo.bind()
         this.state = {
             allVideos: [],
+            searchResults:[],
             videoId: '',
             api:apiKey
         }
+    }
+
+    startVideo(video){
+        let a;
     }
 
     getRelatedVideos = async () => {

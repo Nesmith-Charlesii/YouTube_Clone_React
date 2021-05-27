@@ -23,6 +23,7 @@ function VideoList(props){
         )
 
     }
+    console.log("videolist check",props.videos)
 return (props.videos.map(buildList))
 }
 

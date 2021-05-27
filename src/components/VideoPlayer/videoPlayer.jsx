@@ -5,7 +5,6 @@ const VideoPlayer = (props) => {
 
     // eslint-disable-next-line no-unused-vars
     const [videoId, setVideoId] = useState(props.video)
-    console.log(videoId)
 
 
     

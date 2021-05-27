@@ -22,28 +22,40 @@ class App extends Component {
     }
 
     startVideo(event, video){
-        debugger;
+        
         if (video.id.kind === "youtube#video"){
+            let related = this.getRelatedVideos(video.id.videoId)
+            related = related.items;
+            debugger;
             this.setState(
 
                 {
                     videoId:video.id.videoId,
-                    renderType:'video'
+                    renderType:'video',
+                    searchResults:related
                 }
             )
         }
         else{
             console.log("please don't see me")
         }
-        console.log(this.state)
+        
     }
 
-    getRelatedVideos = async () => {
+    getRelatedVideos = async (videoId) => {
         try {
-            let {data} = await axios.get('http://127.0.0.1:8000/2ys9IS5r9yA')
-            this.setState({allVideos: data})
-            console.log(this.state.allVideos)
-            console.log(`run out`);
+            let {data} = await axios.get('https://www.googleapis.com/youtube/v3/search',{
+                params:{
+                    part:'snippet',
+                    type:'video',
+                    relatedToVideoId:videoId,
+                    key:this.state.api,
+                    maxResults: 15
+                }
+
+            })
+            console.log("related",data);
+            return (data);
         }
         catch(ex) {
             alert(`Whoops! ${ex} Looks like we're having some technical difficulties. Try again later`)
@@ -72,6 +84,8 @@ class App extends Component {
                         </div>
                         <div className="related-videos-container col-4">
                             <h1>related videos</h1>
+                            <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
+
                         </div>
                     </div>
                 </div>

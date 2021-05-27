@@ -5,7 +5,7 @@ import './searchBar.css'
 
 
 const SearchBar = (props) => {
-    console.log(props)
+    
 
     const Submittal = () => {
         alert(`Searching for ${inputs.search}`)
@@ -22,7 +22,7 @@ const SearchBar = (props) => {
                 }
 
             })
-            console.log(props)
+            
             props.processSearch(data);
             
         }

@@ -19,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(33,33,33);
+    opacity: .7;
 }
 
 .video-player-container {

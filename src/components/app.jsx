@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import SearchBar from './SearchBar/searchBar';
-//import VideoPlayer from './VideoPlayer/videoPlayer';
 import './app.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 import apiKey from '../api';

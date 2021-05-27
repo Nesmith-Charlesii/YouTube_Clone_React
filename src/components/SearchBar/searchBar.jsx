@@ -15,7 +15,9 @@ const SearchBar = (props) => {
             let {data} = await axios.get('https://www.googleapis.com/youtube/v3/search',{
                 params:{
                     q:searchTerm,
-                    key:props.api
+                    part:'snippet',
+                    key:props.api,
+                    maxResults:15
                 }
 
             })

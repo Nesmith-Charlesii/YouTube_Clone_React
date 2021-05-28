@@ -18,7 +18,7 @@ const SearchBar = (props) => {
                     q:searchTerm, 
                     part:'snippet',
                     key:props.api,
-                    maxResults: 15
+                    maxResults: 50
                 }
 
             })

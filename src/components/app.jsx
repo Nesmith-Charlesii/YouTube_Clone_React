@@ -6,6 +6,7 @@ import './app.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 import VideoList from './VideoList/videolist';
 import apiKey from '../api';
+import CommentSection from './CommentSection/commentSection'
 
 class App extends Component {
     constructor(props) {
@@ -82,6 +83,11 @@ class App extends Component {
                         </div>
                         <div className="related-videos-container col-4">
                             <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
+                        </div>
+                    </div><br/><br/><br/>
+                    <div className="row">
+                        <div className = "col-8">
+                            <CommentSection videoId = {this.state.videoId}/>
                         </div>
                     </div>
                 </div>

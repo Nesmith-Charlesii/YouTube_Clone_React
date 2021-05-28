@@ -4,7 +4,7 @@ function VideoList(props){
         
         if(video.snippet != undefined){
         return(
-            <table>
+            <table className='list-group-item'>
                 <tbody>
                     <tr>
                         <td>
@@ -15,7 +15,7 @@ function VideoList(props){
                         <td>
                             <h4>
                                 Channel:{video.snippet.channelTitle}<br/>
-                                description: {video.snippet.description}
+                                Video Title: {video.snippet.title}
                             </h4>
 
                         </td>
@@ -26,7 +26,11 @@ function VideoList(props){
 
     }
     console.log("videolist check",props.videos)
-return (props.videos.map(buildList))
+return (
+    <div className='list-group'>
+        {props.videos.map(buildList)}
+    </div>
+    )
 }
 
 export default VideoList;

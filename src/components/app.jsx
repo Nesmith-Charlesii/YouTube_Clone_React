@@ -25,13 +25,7 @@ class App extends Component {
         
         if (video.id.kind === "youtube#video"){
             let related = this.getRelatedVideos(video.id.videoId)
-            
-            this.setState(
-
-                {
-                    
-                }
-            )
+            debugger;
         }
         else{
             console.log("please don't see me")
@@ -51,12 +45,14 @@ class App extends Component {
                 }
 
             })
+            console.log('statecheck ',this.state.videoId)
             console.log("related",data);
             this.setState({
                 searchResults:data.items,
                 renderType:'video',
                 videoId:videoId
             })
+            console.log(this.state.videoId)
             return (data);
         }
         catch(ex) {

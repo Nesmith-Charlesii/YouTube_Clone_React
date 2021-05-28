@@ -8,7 +8,7 @@ const SearchBar = (props) => {
     
 
     const Submittal = () => {
-        alert(`Searching for ${inputs.search}`)
+        // alert(`Searching for ${inputs.search}`)
         getvideo(inputs.search, props)
     }
     const getvideo = async(searchTerm, props) => {

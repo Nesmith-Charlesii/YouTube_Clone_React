@@ -12,11 +12,13 @@ class CommentSection extends Component{
         this.state={
             videoId:props.videoId,
             comments:"No Comments Yet",
-            renderIndex:"view"
+            renderIndex:"view",
+             
         }
     }
 
     async getComments(){
+        debugger;
         try{
             let comments= await axios.get('http://127.0.0.1:8000/'+this.state.videoId)
             comments = comments.data
@@ -40,7 +42,7 @@ class CommentSection extends Component{
             if(this.state.comments === 'No Comments Yet'){
                 return(this.state.comments)
             }
-            return(<ViewComment/>)
+            return(<ViewComment comments={this.state.comments}/>)
         }
         else if (this.state.renderIndex === 'make'){
             

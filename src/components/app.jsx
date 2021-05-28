@@ -6,6 +6,7 @@ import './app.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 import VideoList from './VideoList/videolist';
 import apiKey from '../api';
+import CommentSection from './CommentSection/commentSection'
 
 class App extends Component {
     constructor(props) {
@@ -44,14 +45,13 @@ class App extends Component {
                 }
 
             })
-            console.log('statecheck ',this.state.videoId);
-            console.log("related",data);
+            
             this.setState({
                 searchResults:data.items,
                 renderType:'video',
                 videoId:videoId
             })
-            console.log(this.state.videoId);
+            
 
             return (data);
         }
@@ -61,7 +61,6 @@ class App extends Component {
     }
 
     processSearch(searchResults) {
-        console.log("searchResults", searchResults);
         this.setState({searchResults:searchResults.items, renderType: "search"})
     }
 
@@ -83,6 +82,11 @@ class App extends Component {
                         <div className="col-1"></div>
                         <div className="related-videos-container col-3">
                             <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
+                        </div>
+                    </div><br/><br/><br/>
+                    <div className="row">
+                        <div className = "col-8">
+                            <CommentSection videoId = {this.state.videoId}/>
                         </div>
                     </div>
                 </div>

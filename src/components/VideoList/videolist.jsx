@@ -11,8 +11,8 @@ function VideoList(props){
                     <a href='#' onClick={(e) => props.startVideo(e,video)}><img src={video.snippet.thumbnails.default.url} alt="video"  width="168" /></a>
                 </div>
                 <div className="related-video-content">
-                    Channel:{video.snippet.channelTitle}<br/>
-                    Video Title: {video.snippet.title}
+                    <p><b>{video.snippet.title}</b></p>
+                    <p>{video.snippet.channelTitle}</p>
                 </div>
             </div>
             // <table className='list-group-item'>

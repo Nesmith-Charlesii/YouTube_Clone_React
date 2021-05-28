@@ -36,7 +36,7 @@ const SearchBar = (props) => {
 
     return (
         <div className="form">
-            <form onSubmit = {handleSubmit}>
+            <form onSubmit = {handleSubmit} autoCorrect="off">
                 <div className="form-group d-flex flex-row">
                     <input className="form-rounded" type="text" name="search" onChange={handleChange} value={inputs.search} placeholder="Search" />
                     <button className="mx-4" type="submit">Search</button>

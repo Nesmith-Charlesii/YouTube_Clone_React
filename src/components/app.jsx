@@ -80,7 +80,8 @@ class App extends Component {
                                 <VideoPlayer video={this.state.videoId}/>
                             </div>
                         </div>
-                        <div className="related-videos-container col-4">
+                        <div className="col-1"></div>
+                        <div className="related-videos-container col-3">
                             <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
                         </div>
                     </div>

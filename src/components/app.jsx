@@ -45,14 +45,13 @@ class App extends Component {
                 }
 
             })
-            console.log('statecheck ',this.state.videoId);
-            console.log("related",data);
+            
             this.setState({
                 searchResults:data.items,
                 renderType:'video',
                 videoId:videoId
             })
-            console.log(this.state.videoId);
+            
 
             return (data);
         }
@@ -62,7 +61,6 @@ class App extends Component {
     }
 
     processSearch(searchResults) {
-        console.log("searchResults", searchResults);
         this.setState({searchResults:searchResults.items, renderType: "search"})
     }
 

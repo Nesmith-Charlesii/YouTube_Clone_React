@@ -81,9 +81,7 @@ class App extends Component {
                             </div>
                         </div>
                         <div className="related-videos-container col-4">
-                            <h1>related videos</h1>
                             <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
-
                         </div>
                     </div>
                 </div>
@@ -95,11 +93,8 @@ class App extends Component {
                         <SearchBar api={this.state.api} processSearch= {this.processSearch} />
                     </div>
                     <div className="row">
-                        <div className = "col-8">
+                        <div className = "col-12">
                             <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
-                        </div>
-                        <div className="related-videos-container col-4">
-                            <h1>related videos</h1>
                         </div>
                     </div>
                 </div>
@@ -113,12 +108,11 @@ class App extends Component {
                 <div className="row">
                     <div className = "col-8">
                         <div className="video-player-container">
-                            
                             <VideoPlayer video={this.state.videoId}/>
                         </div>
                     </div>
                     <div className="related-videos-container col-4">
-                        <h1>related videos</h1>
+                        
                     </div>
                 </div>
             </div>

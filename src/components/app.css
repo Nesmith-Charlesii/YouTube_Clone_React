@@ -39,3 +39,8 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.search-list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}

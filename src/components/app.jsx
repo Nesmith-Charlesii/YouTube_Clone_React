@@ -92,10 +92,8 @@ class App extends Component {
                     <div className="search-header">
                         <SearchBar api={this.state.api} processSearch= {this.processSearch} />
                     </div>
-                    <div className="row">
-                        <div className = "col-12">
-                            <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
-                        </div>
+                    <div className="search-list-wrapper">
+                        <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
                     </div>
                 </div>
             )

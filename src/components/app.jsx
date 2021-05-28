@@ -46,16 +46,13 @@ class App extends Component {
             })
             console.log('statecheck ',this.state.videoId);
             console.log("related",data);
-            this.state.searchResults = data.items;
-            this.state.renderType = 'video';
-            this.state.videoId = videoId;
-            // this.setState({
-            //     searchResults:data.items,
-            //     renderType:'video',
-            //     videoId:videoId
-            // })
+            this.setState({
+                searchResults:data.items,
+                renderType:'video',
+                videoId:videoId
+            })
             console.log(this.state.videoId);
-            this.forceUpdate();
+
             return (data);
         }
         catch(ex) {

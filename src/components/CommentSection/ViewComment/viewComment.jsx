@@ -35,15 +35,46 @@ function ViewComment(props){
         }
     }
     
-    debugger;
+    
 
     function commentBreakout(comment){
+        if (isNaN(comment.parent)){
+            return(
+            <table width ='30%' align='left' className='table-dark'>
+                <tbody>
+                    <tr>
+                        <td>Comment#:</td>
+                        <td>{comment.id}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan='2'>{comment.comment_text}</td>
+                    </tr>
+                </tbody>
+            </table>)
+        }
+        return(
+        <table width ='30%' align='left' className='table-secondary'>
+        <tbody>
+            <tr>
+                <td>Comment#:</td>
+                <td>{comment.id}</td>
+            </tr>
+            <tr>
+                <td colSpan='2'>{comment.comment_text}</td>
+            </tr>
+            <tr>
+                <td>
+                    Reply To:
+                </td>
+                <td>
+                    {comment.parent}
+                </td>
+            </tr>
+        </tbody>
+    </table>)
 
     }
     
-    return(<div>
-        <button>Make Comment</button>
-
-    </div>)
+    return(parents.map(commentBreakout))
 }
 export default ViewComment

@@ -18,7 +18,6 @@ class CommentSection extends Component{
     }
 
     async getComments(){
-        debugger;
         try{
             let comments= await axios.get('http://127.0.0.1:8000/'+this.state.videoId)
             comments = comments.data

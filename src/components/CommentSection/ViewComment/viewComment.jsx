@@ -21,7 +21,7 @@ function ViewComment(props){
         return(b.id-a.id);
     })
     let index = -1
-    debugger;
+    //debugger;
     while (replies.length>0){
         let insert = replies.shift()
         index = parents.findIndex((comment,arrayIndex)=>{

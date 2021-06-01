@@ -37,7 +37,7 @@ class CommentSection extends Component{
     }
 
     commentMaker(event, video, reply="new"){
-        debugger;
+        //debugger;
         event.preventDefault()
         let url = 'http://127.0.0.1:8000';
         if(reply === "new"){
@@ -84,7 +84,7 @@ class CommentSection extends Component{
         this.getComments();
     }
     render(){
-        debugger;
+        //debugger;
         if(this.state.renderIndex === 'view'){
             if(this.state.comments === 'No Comments Yet'){
                 return(this.state.comments)

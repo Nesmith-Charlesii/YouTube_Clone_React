@@ -78,7 +78,7 @@ class App extends Component {
                     <div className="row">
                         <div className = "col-8">
                             <div className="video-player-container">
-                                <VideoPlayer video={this.state.videoId} videoTitle={this.state.video.snippet.title} />
+                                <VideoPlayer video={this.state.videoId} videoTitle={this.state.video.snippet.title} videoDescription={this.state.video.snippet.description} />
                             </div>
                         </div>
                         <div className="col-1"></div>

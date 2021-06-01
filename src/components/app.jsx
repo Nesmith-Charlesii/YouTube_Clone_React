@@ -14,7 +14,7 @@ class App extends Component {
         this.startVideo = this.startVideo.bind(this)
         this.processSearch = this.processSearch.bind(this)
         this.state = {
-            allVideos: [],
+            video: [],
             searchResults:[],
             videoId: '44-Kx5ZZTsY',
             api:apiKey,
@@ -23,9 +23,10 @@ class App extends Component {
     }
 
     startVideo(event, video){
-        
         if (video.id.kind === "youtube#video"){
             let related = this.getRelatedVideos(video.id.videoId)
+            this.setState({video:video})
+            console.log('video state', this.state.video)
         }
         else{
             console.log("please don't see me")
@@ -76,7 +77,7 @@ class App extends Component {
                     <div className="row">
                         <div className = "col-8">
                             <div className="video-player-container">
-                                <VideoPlayer video={this.state.videoId}/>
+                                <VideoPlayer video={this.state.videoId} videoTitle={this.state.video.snippet.title} />
                             </div>
                         </div>
                         <div className="col-1"></div>

@@ -21,7 +21,6 @@ function ViewComment(props){
         return(b.id-a.id);
     })
     let index = -1
-    //debugger;
     while (replies.length>0){
         let insert = replies.shift()
         index = parents.findIndex((comment,arrayIndex)=>{
@@ -78,6 +77,10 @@ function ViewComment(props){
 
     }
     
-    return(parents.map(commentBreakout))
+    return(<div>
+        {parents.map(commentBreakout)}
+        <button className="btn btn-dark" onClick={(e) => props.commentMaker(e,props.video)}>make a comment</button>
+        </div>
+        )
 }
 export default ViewComment

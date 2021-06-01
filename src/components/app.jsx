@@ -27,6 +27,7 @@ class App extends Component {
             let related = this.getRelatedVideos(video.id.videoId)
             this.setState({video:video})
             console.log('video state', this.state.video)
+            this.forceUpdate()
         }
         else{
             console.log("please don't see me")

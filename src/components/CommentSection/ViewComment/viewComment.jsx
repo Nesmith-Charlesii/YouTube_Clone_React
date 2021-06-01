@@ -1,4 +1,7 @@
 function ViewComment(props){
+    if (props.comments.length < 1){
+        return(<button className="btn btn-dark" onClick={(e) => props.commentMaker(e,props.video)}>be the first to make a comment</button>)
+    }
     let parents = props.comments.filter((comment)=>{
         if(comment.parent===null){
             return true;

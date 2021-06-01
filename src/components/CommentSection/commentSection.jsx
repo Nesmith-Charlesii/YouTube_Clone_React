@@ -45,20 +45,17 @@ class CommentSection extends Component{
         let url = 'http://127.0.0.1:8000';
         if(reply === "new"){
             url = url+'/'+video+'/';
-            // this.state.renderIndex = 'make';
-            // this.state.commentDest = url;
-            // this.forceUpdate()
             this.setState({
                 renderIndex:"make",
                 commentDest:url
             });
-            console.log(this.state);
         }
         else{
             url = url+'/'+video+'/'+reply;
             this.setState({
                 renderIndex:"make",
-                commentDest:url
+                commentDest:url,
+                commentParent:reply
             });
         }
         
@@ -78,7 +75,7 @@ class CommentSection extends Component{
     }
         else{
             console.log(await axios.post(url, {
-                comment_text:event.target.value,
+                comment_text:event.target.comment.value,
                 video:this.state.videoId,
                 parent:this.state.commentParent
             }))

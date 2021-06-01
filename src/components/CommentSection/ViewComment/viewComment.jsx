@@ -45,12 +45,19 @@ function ViewComment(props){
             <table width ='30%' align='left' className='table-dark'>
                 <tbody>
                     <tr>
+                        <td></td>
                         <td>Comment#:</td>
                         <td>{comment.id}</td>
                     </tr>
                     <tr>
-                        <td colSpan='2'>{comment.comment_text}</td>
+                        <td colSpan='3'>{comment.comment_text}</td>
                     </tr>
+                    <tr>
+                        <td><button className='btn btn-dark' name={comment.id} value='Reply' onClick={(e) => props.commentMaker(e,props.video,comment.id)}>Reply</button></td>
+                        <td><button className='btn btn-dark' name={comment.id} id='like' value='Like this comment'/></td>
+                        <td><button className='btn btn-dark' name={comment.id} id='dislike' value='dislike this comment'/></td>
+                    </tr>
+
                 </tbody>
             </table>)
         }
@@ -58,6 +65,7 @@ function ViewComment(props){
         <table width ='30%' align='left' className='table-secondary'>
         <tbody>
             <tr>
+                <td></td>
                 <td>Comment#:</td>
                 <td>{comment.id}</td>
             </tr>
@@ -65,12 +73,18 @@ function ViewComment(props){
                 <td colSpan='2'>{comment.comment_text}</td>
             </tr>
             <tr>
+                <td></td>
                 <td>
                     Reply To:
                 </td>
                 <td>
                     {comment.parent}
                 </td>
+            </tr>
+            <tr>
+                <td><button className='btn btn-dark' name={comment.id} value='Reply' onClick={(e) => props.commentMaker(e,props.video,comment.id)}>Reply</button></td>
+                <td><button className='btn btn-dark' name={comment.id} id='like' value='Like this comment'/></td>
+                <td><button className='btn btn-dark' name={comment.id} id='dislike' value='dislike this comment'/></td>
             </tr>
         </tbody>
     </table>)

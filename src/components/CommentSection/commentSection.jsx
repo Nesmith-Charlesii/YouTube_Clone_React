@@ -10,6 +10,7 @@ class CommentSection extends Component{
         super(props);
         
         this.commentMaker = this.commentMaker.bind(this)
+        this.postComment = this.postComment.bind(this)
         this.state={
             videoId:props.videoId,
             comments:"No Comments Yet",
@@ -25,7 +26,10 @@ class CommentSection extends Component{
             let comments= await axios.get('http://127.0.0.1:8000/'+this.state.videoId)
             comments = comments.data
             this.setState(
-                {comments:comments}
+                {renderIndex:"view",
+                commentDest:"none",
+                commentParent:"new",
+                comments:comments}
             )
         }
         catch(e){
@@ -37,18 +41,18 @@ class CommentSection extends Component{
     }
 
     commentMaker(event, video, reply="new"){
-        debugger;
+       
         event.preventDefault()
         let url = 'http://127.0.0.1:8000';
         if(reply === "new"){
             url = url+'/'+video+'/';
-            this.state.renderIndex = 'make';
-            this.state.commentDest = url;
-            this.forceUpdate()
-            // this.setState({
-            //     renderIndex:"make",
-            //     commentDest:url
-            //});
+            // this.state.renderIndex = 'make';
+            // this.state.commentDest = url;
+            // this.forceUpdate()
+            this.setState({
+                renderIndex:"make",
+                commentDest:url
+            });
             console.log(this.state);
         }
         else{
@@ -63,11 +67,16 @@ class CommentSection extends Component{
     }
 
     async postComment(event,url){
-        if (this.state.commentParent === 'new')
-        console.log(await axios.post(url, {
-            comment_text:event.target.value,
+        console.log(event," ",url)
+        let comment = {
+            comment_text:event.target.comment.value,
             video:this.state.videoId
-        }))
+        }
+        event.preventDefault();
+        if (this.state.commentParent === 'new'){
+        let test = await axios.post(url, comment)
+        console.log(test)
+    }
         else{
             console.log(await axios.post(url, {
                 comment_text:event.target.value,
@@ -76,6 +85,7 @@ class CommentSection extends Component{
             }))
 
         }
+        this.getComments();
 
     }
 
@@ -84,16 +94,17 @@ class CommentSection extends Component{
         this.getComments();
     }
     render(){
-        debugger;
+        
         if(this.state.renderIndex === 'view'){
             if(this.state.comments === 'No Comments Yet'){
                 return(this.state.comments)
             }
+            
             return(<ViewComment comments={this.state.comments} commentMaker={this.commentMaker} video={this.state.videoId}/>)
         }
         else if (this.state.renderIndex === 'make'){
             
-            return(<MakeComment postComment={this.postComment} url={this.commentDest}/>)
+            return(<MakeComment postComment={this.postComment} url={this.state.commentDest}/>)
         
         }
     }

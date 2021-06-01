@@ -41,8 +41,6 @@ class CommentSection extends Component{
                 commentParent:reply
             });
         }
-        
-
     }
 
     async postComment(event,url){
@@ -73,16 +71,32 @@ class CommentSection extends Component{
             }
         }
         let comments = this.props.getComments(this.state.videoId)
-        this.setState({comments:comments});
-
+        newComments(comments);
     }
 
-    componentDidMount(){
+    
+    likeComment = async(e, video_id, comment_id ) => {
+        axios.put(`http://127.0.0.1:8000/${video_id}/${comment_id}/like`)
+        this.getComments()
+    }
+
+    dislikeComment = async(e, video_id, comment_id ) => {
+        axios.put(`http://127.0.0.1:8000/${video_id}/${comment_id}/dislike`)
+        this.getComments()
+    }
+
+    componentDidMount()
+    {
         this.setState({comments:this.props.comments})
     }
+    
+
+
 
     newComments(comments){
-        this.setState({comments:comments})
+        this.setState(
+            {comments:comments}
+            );
     }
 
     render(){
@@ -97,7 +111,7 @@ class CommentSection extends Component{
             }
              
             
-            return(<ViewComment comments={this.state.comments} commentMaker={this.commentMaker} video={this.state.videoId}/>)
+            return(<ViewComment comments={this.state.comments} commentMaker={this.commentMaker} video={this.state.videoId} likeComment={this.likeComment} dislikeComment={this.dislikeComment} />)
         }
         else if (this.state.renderIndex === 'make'){
             

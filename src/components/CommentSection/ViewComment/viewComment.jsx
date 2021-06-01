@@ -71,6 +71,8 @@ function ViewComment(props){
             </tr>
             <tr>
                 <td colSpan='2'>{comment.comment_text}</td>
+                <td><button className="btn btn-primary btn-sm" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}>Like</button></td>
+                <td><button className="btn btn-danger btn-sm" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}>dislike</button></td>
             </tr>
             <tr>
                 <td></td>

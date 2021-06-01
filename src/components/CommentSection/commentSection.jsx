@@ -38,7 +38,8 @@ class CommentSection extends Component{
             this.setState({
                 renderIndex:"make",
                 commentDest:url,
-                commentParent:reply
+                commentParent:reply,
+                force:false
             });
         }
     }
@@ -70,8 +71,16 @@ class CommentSection extends Component{
                 console.log(e)
             }
         }
-        let comments = this.props.getComments(this.state.videoId)
-        newComments(comments);
+        this.state.comments = []
+        let comments = await this.props.getComments(this.state.videoId)
+        this.setState(
+            {
+                renderIndex:"view",
+                comments:comments,
+                commentParent:"new",
+                force:true
+            }
+        )
     }
 
     
@@ -89,6 +98,8 @@ class CommentSection extends Component{
     {
         this.setState({comments:this.props.comments})
     }
+
+    
     
 
 
@@ -100,9 +111,8 @@ class CommentSection extends Component{
     }
 
     render(){
-        debugger;
         if(this.state.renderIndex === 'view'){
-            if(this.state.comments != this.props.comments){
+            if(this.state.comments != this.props.comments && !this.state.force){
                 this.newComments(this.props.comments)
                 return("re-render failed");
             }
@@ -110,7 +120,7 @@ class CommentSection extends Component{
                 return(<MakeComment postComment={this.postComment} url={this.state.commentDest}/>)
             }
              
-            
+            this.state.force=false;
             return(<ViewComment comments={this.state.comments} commentMaker={this.commentMaker} video={this.state.videoId} likeComment={this.likeComment} dislikeComment={this.dislikeComment} />)
         }
         else if (this.state.renderIndex === 'make'){

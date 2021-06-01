@@ -80,16 +80,12 @@ class App extends Component {
                         <div className = "col-8">
                             <div className="video-player-container">
                                 <VideoPlayer video={this.state.videoId} videoTitle={this.state.videoTitle} videoDescription={this.state.videoDescription} />
+                                <CommentSection videoId = {this.state.videoId}/>
                             </div>
                         </div>
                         <div className="col-1"></div>
                         <div className="related-videos-container col-3">
                             <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
-                        </div>
-                    </div><br/><br/><br/>
-                    <div className="row">
-                        <div className = "col-8">
-                            <CommentSection videoId = {this.state.videoId}/>
                         </div>
                     </div>
                 </div>

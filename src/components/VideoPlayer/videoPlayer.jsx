@@ -27,6 +27,7 @@ const VideoPlayer = (props) => {
                     <p id="video-title">{props.videoTitle}</p>
                     <hr/>
                     <p id="video-description">{props.videoDescription}</p>
+                    <hr/>
                 </div>
                 <iframe className="responsive-iframe" title="view-player" id="ytplayer" type="text/html" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} frameBorder="0">
                 </iframe>

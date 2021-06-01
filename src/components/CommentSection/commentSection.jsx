@@ -16,7 +16,6 @@ class CommentSection extends Component{
             renderIndex:"view",
             commentDest:"none",
             commentParent:"new"
-             
         }
     }
 

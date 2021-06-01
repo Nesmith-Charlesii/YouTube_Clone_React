@@ -10,19 +10,24 @@ const VideoPlayer = (props) => {
         if (props.video === 'null'){
             return (
                 <>
-                <h1>{props.videoTitle}</h1>
-                <h2>{props.videoDescription}</h2>
+                <div className="video-info">
+                    <p id="video-title">{props.videoTitle}</p>
+                    <hr/>
+                    <p>{props.videoDescription}</p>
+                </div>
                 <iframe className="responsive-iframe" title="view-player" id="ytplayer" type="text/html" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} frameBorder="0">
                 </iframe>
                 </>
             )
         }
         else{
-            //put logic here for title/description
             return (
                 <>
-                <h1>{props.videoTitle}</h1>
-                <h2>{props.videoDescription}</h2>
+                <div className="video-info">
+                    <p id="video-title">{props.videoTitle}</p>
+                    <hr/>
+                    <p id="video-description">{props.videoDescription}</p>
+                </div>
                 <iframe className="responsive-iframe" title="view-player" id="ytplayer" type="text/html" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} frameBorder="0">
                 </iframe>
                 </>
@@ -31,11 +36,13 @@ const VideoPlayer = (props) => {
     }
     else{
         setVideoId(props.video)
-        //put logic here for title/description infromation is held
         return (
             <>
-            <h1>{props.videoTitle}</h1>
-            <h2>{props.videoDescription}</h2>
+            <div className="video-info">
+                <p id="video-title">{props.videoTitle}</p>
+                <hr/>
+                <p>{props.videoDescription}</p>
+            </div>
             <iframe className="responsive-iframe" title="view-player" id="ytplayer" type="text/html" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} frameBorder="0">
             </iframe>
             </>

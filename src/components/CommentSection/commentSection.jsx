@@ -20,24 +20,7 @@ class CommentSection extends Component{
         }
     }
 
-    async getComments(){
-        try{
-            let comments= await axios.get('http://127.0.0.1:8000/'+this.state.videoId)
-            comments = comments.data
-            this.setState(
-                {renderIndex:"view",
-                commentDest:"none",
-                commentParent:"new",
-                comments:comments}
-            )
-        }
-        catch(e){
-            console.log(e)
-            this.setState({comments:"No Comments Yet"})
-
-        }
-
-    }
+    
 
     commentMaker(event, video, reply="new"){
        
@@ -70,31 +53,49 @@ class CommentSection extends Component{
         }
         event.preventDefault();
         if (this.state.commentParent === 'new'){
-        let test = await axios.post(url, comment)
-        console.log(test)
+            try{
+                let test = await axios.post(url, comment)
+            }
+            catch(e){
+                console.log(e)
+            }
     }
         else{
-            console.log(await axios.post(url, {
+            try{
+            await axios.post(url, {
                 comment_text:event.target.comment.value,
                 video:this.state.videoId,
                 parent:this.state.commentParent
-            }))
-
-        }
-        this.getComments();
-
-    }
-
-
-    async componentDidMount(){
-        this.getComments();
-    }
-    render(){
-        
-        if(this.state.renderIndex === 'view'){
-            if(this.state.comments === 'No Comments Yet'){
-                return(this.state.comments)
+            })
             }
+            catch(e){
+                console.log(e)
+            }
+        }
+        let comments = this.props.getComments(this.state.videoId)
+        this.setState({comments:comments});
+
+    }
+
+    componentDidMount(){
+        this.setState({comments:this.props.comments})
+    }
+
+    newComments(comments){
+        this.setState({comments:comments})
+    }
+
+    render(){
+        debugger;
+        if(this.state.renderIndex === 'view'){
+            if(this.state.comments != this.props.comments){
+                this.newComments(this.props.comments)
+                return("re-render failed");
+            }
+            else if(this.state.comments === 'No Comments Yet'){
+                return(<MakeComment postComment={this.postComment} url={this.state.commentDest}/>)
+            }
+             
             
             return(<ViewComment comments={this.state.comments} commentMaker={this.commentMaker} video={this.state.videoId}/>)
         }

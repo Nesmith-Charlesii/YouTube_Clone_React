@@ -42,7 +42,7 @@ function ViewComment(props){
     function commentBreakout(comment){
         if (isNaN(comment.parent)){
             return(
-            <table width ='30%' align='left' className='table-dark'>
+            <table key={comment.id} width ='30%' align='left' className='table-dark'>
                 <tbody>
                     <tr>
                         <td></td>
@@ -62,7 +62,7 @@ function ViewComment(props){
             </table>)
         }
         return(
-        <table width ='30%' align='left' className='table-secondary'>
+        <table key={comment.id} width ='30%' align='left' className='table-secondary'>
         <tbody>
             <tr>
                 <td></td>

@@ -13,27 +13,45 @@ class App extends Component {
         super(props);
         this.startVideo = this.startVideo.bind(this)
         this.processSearch = this.processSearch.bind(this)
+        this.getComments = this.getComments.bind(this)
         this.state = {
             videoTitle: '',
             videoDescription: '',
             searchResults:[],
             videoId: '44-Kx5ZZTsY',
             api:apiKey,
-            renderType: 'home'
+            renderType: 'home',
+            comments:[]
         }
     }
 
-    startVideo(event, video){
+    async startVideo(event, video){
         if (video.id.kind === "youtube#video"){
+            let comments = await this.getComments(video.id.videoId)
             let related = this.getRelatedVideos(video.id.videoId)
-            this.setState({videoTitle:video.snippet.title, videoDescription: video.snippet.description})
+            this.setState({videoTitle:video.snippet.title, videoDescription: video.snippet.description, comments:comments})
             console.log('VIDEO INFO', this.state.videoTitle, this.state.videoDescription)
-            this.forceUpdate()
+            
         }
         else{
             console.log("please don't see me")
         }
         
+    }
+
+    async getComments(videoId){
+        try{
+            let comments= await axios.get('http://127.0.0.1:8000/'+videoId)
+            comments = comments.data
+            return(comments)
+            
+        }
+        catch(e){
+            console.log(e)
+            this.setState({comments:"No Comments Yet"})
+
+        }
+
     }
 
     async getRelatedVideos(videoId) {
@@ -71,26 +89,53 @@ class App extends Component {
         
 
         if(this.state.renderType === 'video') {
-            return (
-                <div className="container-fluid">
-                    <div className="search-header">
-                        <SearchBar api={this.state.api} processSearch= {this.processSearch} />
-                    </div>
-                    <div className="row">
-                        <div className = "col-8">
-                            <div className="video-player-container">
-                                <VideoPlayer video={this.state.videoId} videoTitle={this.state.videoTitle} videoDescription={this.state.videoDescription} />
-                                <CommentSection videoId = {this.state.videoId}/>
+           
+            if (this.state.comments.length>0){
+                return (
+                    <div className="container-fluid">
+                        <div className="search-header">
+                            <SearchBar api={this.state.api} processSearch= {this.processSearch} />
+                        </div>
+                        <div className="row">
+                            <div className = "col-8">
+                                <div className="video-player-container">
+                                    <VideoPlayer video={this.state.videoId} videoTitle={this.state.videoTitle} videoDescription={this.state.videoDescription} />
+                                    
+                                    <CommentSection videoId = {this.state.videoId} comments={this.state.comments} getComments={this.getComments}/>
+                                </div>
+                            </div>
+                            <div className="col-1"></div>
+                            <div className="related-videos-container col-3">
+                                <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
                             </div>
                         </div>
-                        <div className="col-1"></div>
-                        <div className="related-videos-container col-3">
-                            <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
+                    </div>
+                )
+            }
+            else{
+                return (
+                    <div className="container-fluid">
+                        <div className="search-header">
+                            <SearchBar api={this.state.api} processSearch= {this.processSearch} />
+                        </div>
+                        <div className="row">
+                            <div className = "col-8">
+                                <div className="video-player-container">
+                                    <VideoPlayer video={this.state.videoId} videoTitle={this.state.videoTitle} videoDescription={this.state.videoDescription} />
+                                    
+                                    <CommentSection videoId = {this.state.videoId} comments="No Comments Yet" getComments={this.getComments}/>
+                                </div>
+                            </div>
+                            <div className="col-1"></div>
+                            <div className="related-videos-container col-3">
+                                <VideoList startVideo = {this.startVideo} videos = {this.state.searchResults} />
+                            </div>
                         </div>
                     </div>
-                </div>
-            )
-        } else if(this.state.renderType === 'search') {
+                )
+            }
+        }
+        else if(this.state.renderType === 'search') {
             return (
                 <div className="container-fluid">
                     <div className="search-header">

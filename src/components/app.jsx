@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import SearchBar from './SearchBar/searchBar';
 import './app.css';
+import './fontAwesome/css/all.min.css';
 import VideoPlayer from './VideoPlayer/videoPlayer';
 import VideoList from './VideoList/videolist';
 import apiKey from '../api';

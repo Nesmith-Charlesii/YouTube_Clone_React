@@ -40,7 +40,7 @@ const SearchBar = (props) => {
             <form onSubmit = {handleSubmit} autoCorrect="off">
                 <div className="form-group d-flex flex-row">
                     <input className="form-rounded" type="text" name="search" onChange={handleChange} value={inputs.search} placeholder="Search" />
-                    <button className="btn btn-dark" type="submit">Search</button>
+                    <button className="mx-3" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
         </div>

@@ -1,5 +1,5 @@
 import './viewComment.css';
-import './fontAwesome/css/all.min.css'
+import './fontAwesome/css/all.min.css';
 
 function ViewComment(props){
     //this first if statement shouldn't ever be seen but it's a emergency catch in case we accidently pass in an empty comment array

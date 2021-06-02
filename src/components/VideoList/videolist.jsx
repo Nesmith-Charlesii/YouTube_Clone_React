@@ -12,7 +12,7 @@ function VideoList(props){
                 return(
                     <div className="related-video-content" key={key}>
                         <div className="related-video-thumbnail">
-                            <a href='/#' onClick={(e) => props.startVideo(e,video)}><img src={video.snippet.thumbnails.default.url} alt="video"  width="168" /></a>
+                            <a href='/#' onClick={(e) => props.startVideo(e,video)}><img src={video.snippet.thumbnails.high.url} alt="video"  width="168" /></a>
                         </div>
                         <div className="related-video-content">
                             <p><b>{video.snippet.title}</b></p>

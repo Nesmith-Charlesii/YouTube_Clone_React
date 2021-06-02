@@ -23,7 +23,7 @@ class CommentSection extends Component{
     
 
     commentMaker(event, video, reply="new"){
-       
+        
         event.preventDefault()
         let url = 'http://127.0.0.1:8000';
         if(reply === "new"){
@@ -86,12 +86,10 @@ class CommentSection extends Component{
     
     likeComment = async(e, video_id, comment_id ) => {
         axios.put(`http://127.0.0.1:8000/${video_id}/${comment_id}/like`)
-        this.getComments()
     }
 
     dislikeComment = async(e, video_id, comment_id ) => {
         axios.put(`http://127.0.0.1:8000/${video_id}/${comment_id}/dislike`)
-        this.getComments()
     }
 
     componentDidMount()

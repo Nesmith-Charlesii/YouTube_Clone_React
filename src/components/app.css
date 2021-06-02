@@ -20,6 +20,7 @@ body {
     align-items: center;
     background-color: rgb(33,33,33);
     opacity: .9;
+    border-bottom: 1px groove rgb(85, 45, 255);
 }
 
 .video-player-container {

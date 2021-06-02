@@ -1,3 +1,6 @@
+import './viewComment.css';
+import './fontAwesome/css/all.min.css'
+
 function ViewComment(props){
     if (props.comments.length < 1){
         return(<button className="btn btn-dark" onClick={(e) => props.commentMaker(e,props.video)}>be the first to make a comment</button>)
@@ -60,37 +63,48 @@ function ViewComment(props){
 
                 </tbody>
             </table>)
-        }
+        } else {
         return(
-        <table key={comment.id} width ='30%' align='left' className='table-secondary'>
-        <tbody>
-            <tr>
-                <td></td>
-                <td>Comment#:</td>
-                <td>{comment.id}</td>
-            </tr>
-            <tr>
-                <td colSpan='2'>{comment.comment_text}</td>
-                <td><button className="btn btn-primary btn-sm" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}>Like</button></td>
-                <td><button className="btn btn-danger btn-sm" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}>dislike</button></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    Reply To:
-                </td>
-                <td>
-                    {comment.parent}
-                </td>
-            </tr>
-            <tr>
-                <td><button className='btn btn-dark' name={comment.id} value='Reply' onClick={(e) => props.commentMaker(e,props.video,comment.id)}>Reply</button></td>
-                <td><button className='btn btn-dark' name={comment.id} id='like' value='Like this comment'/></td>
-                <td><button className='btn btn-dark' name={comment.id} id='dislike' value='dislike this comment'/></td>
-            </tr>
-        </tbody>
-    </table>)
-
+            <div className="comment-section">
+                <ul>
+                    <li id="Anon">Anon</li>
+                    <ul>
+                        <li>{comment.parent}</li>
+                        <li>{comment.comment_text}</li>
+                        <li><i className="far fa-thumbs-up" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}></i> <i className="far fa-thumbs-down mx-4" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}></i></li>
+                    </ul>
+                </ul>
+            </div>
+    //     <table key={comment.id} width ='30%' align='left' className='table-secondary'>
+    //     <tbody>
+    //         <tr>
+    //             <td>juice</td>
+    //             <td>Comment:</td>
+    //             <td>{comment.id}</td>
+    //         </tr>
+    //         <tr>
+    //             <td colSpan='2'>{comment.comment_text}</td>
+    //             <td><button className="btn btn-primary btn-sm" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}>Like</button></td>
+    //             <td><button className="btn btn-danger btn-sm" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}>dislike</button></td>
+    //         </tr>
+    //         <tr>
+    //             <td></td>
+    //             <td>
+    //                 Reply To:
+    //             </td>
+    //             <td>
+    //                 {comment.parent}
+    //             </td>
+    //         </tr>
+    //         <tr>
+    //             <td><button className='btn btn-dark' name={comment.id} value='Reply' onClick={(e) => props.commentMaker(e,props.video,comment.id)}>Reply</button></td>
+    //             <td><button className="btn btn-primary btn-sm" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}>Like</button></td>
+    //             <td><button className="btn btn-danger btn-sm" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}>dislike</button></td>
+    //         </tr>
+    //     </tbody>
+    // </table>
+    )
+        }
     }
     
     return(<div>

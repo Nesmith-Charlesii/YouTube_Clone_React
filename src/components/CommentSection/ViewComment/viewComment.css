@@ -1,0 +1,22 @@
+.comment-section {
+    color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.comment-section ul {
+    list-style: none;
+}
+
+.comment-section ul li {
+    padding: 4px;
+}
+
+#Anon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid white;
+    border-radius: 50%;
+}

@@ -1,5 +1,5 @@
 import './makeComment.css'
-
+//generates the form to post a comment
 function MakeComment(props){
     
     return(

@@ -3,14 +3,15 @@ import useSearchForm from '../CustomHooks/customHooks';
 import axios from 'axios';
 import './searchBar.css'
 
-
+//this generates the search bar and handles onSubmit behavior
 const SearchBar = (props) => {
     
 
     const Submittal = () => {
-        // alert(`Searching for ${inputs.search}`)
         getvideo(inputs.search, props)
     }
+
+    //api call to get the videos from a search
     const getvideo = async(searchTerm, props) => {
         try{
             let {data} = await axios.get('https://www.googleapis.com/youtube/v3/search',{
@@ -39,7 +40,7 @@ const SearchBar = (props) => {
             <form onSubmit = {handleSubmit} autoCorrect="off">
                 <div className="form-group d-flex flex-row">
                     <input className="form-rounded" type="text" name="search" onChange={handleChange} value={inputs.search} placeholder="Search" />
-                    <button className="mx-4" type="submit">Search</button>
+                    <button className="btn btn-dark" type="submit">Search</button>
                 </div>
             </form>
         </div>

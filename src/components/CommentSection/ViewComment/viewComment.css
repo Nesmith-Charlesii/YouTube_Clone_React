@@ -40,3 +40,8 @@
     box-shadow: 0 5px transparent;
     transform: translateY(4px);
 }
+
+button {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+}

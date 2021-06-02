@@ -10,11 +10,11 @@
     opacity: 1 !important;
 }
 
-input::placeholder {
+.form-rounded::placeholder {
     font-family: arial;
 }
 
-input:focus {
+.form-rounded:focus {
     color: white;
     background-color: rgb(20, 20, 20);
     animation-name: borderPulse;

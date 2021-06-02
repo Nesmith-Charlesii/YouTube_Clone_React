@@ -120,7 +120,7 @@ class CommentSection extends Component{
         }
         else if (this.state.renderIndex === 'make'){
             
-            return(<MakeComment postComment={this.postComment} url={this.state.commentDest}/>)
+            return(<MakeComment postComment={this.postComment} url={this.state.commentDest} />)
         
         }
     }

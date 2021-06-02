@@ -16,7 +16,9 @@ class CommentSection extends Component{
             comments:"No Comments Yet",
             renderIndex:"view",
             commentDest:"none",
-            commentParent:"new"
+            commentParent:"new",
+            likes: Number,
+            dislikes: Number
         }
     }
 
@@ -82,25 +84,21 @@ class CommentSection extends Component{
             }
         )
     }
-
     
     likeComment = async(e, video_id, comment_id ) => {
         axios.put(`http://127.0.0.1:8000/${video_id}/${comment_id}/like`)
+        this.props.getComments(this.state.videoId)
     }
 
     dislikeComment = async(e, video_id, comment_id ) => {
         axios.put(`http://127.0.0.1:8000/${video_id}/${comment_id}/dislike`)
+        this.props.getComments(this.state.videoId)
     }
 
     componentDidMount()
     {
         this.setState({comments:this.props.comments})
     }
-
-    
-    
-
-
 
     newComments(comments){
         this.setState(
@@ -117,7 +115,6 @@ class CommentSection extends Component{
             else if(this.state.comments === 'No Comments Yet'){
                 return(<MakeComment postComment={this.postComment} url={this.state.commentDest}/>)
             }
-             
             this.state.force=false;
             return(<ViewComment comments={this.state.comments} commentMaker={this.commentMaker} video={this.state.videoId} likeComment={this.likeComment} dislikeComment={this.dislikeComment} />)
         }

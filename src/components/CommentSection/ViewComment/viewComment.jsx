@@ -71,7 +71,9 @@ function ViewComment(props){
                     <ul>
                         <li>{comment.parent}</li>
                         <li>{comment.comment_text}</li>
-                        <li><i className="far fa-thumbs-up" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}></i> <i className="far fa-thumbs-down mx-4" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}></i></li>
+                        <li><i className="far fa-thumbs-up" id="thumbs-up" name={comment.id} onClick={(e) => props.likeComment(e, props.video, comment.id)}> {comment.likes}</i> <i className="far fa-thumbs-down mx-4" id="thumbs-down" name={comment.id} onClick={(e) => props.dislikeComment(e, props.video, comment.id)}> {comment.dislikes}</i></li>
+                        <li>Reply To: {comment.parent} </li>
+                        <li><button className='btn btn-dark' name={comment.id} value='Reply' onClick={(e) => props.commentMaker(e,props.video,comment.id)}>Reply</button></li>
                     </ul>
                 </ul>
             </div>

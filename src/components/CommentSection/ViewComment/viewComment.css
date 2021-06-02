@@ -20,3 +20,23 @@
     border: 1px solid white;
     border-radius: 50%;
 }
+
+#thumbs-up:hover {
+    color: green;
+    cursor: pointer;
+}
+
+#thumbs-down:hover {
+    color: red;
+    cursor: pointer;
+}
+
+#thumbs-up:active {
+    box-shadow: 0 5px transparent;
+    transform: translateY(4px);
+}
+
+#thumbs-down:active {
+    box-shadow: 0 5px transparent;
+    transform: translateY(4px);
+}

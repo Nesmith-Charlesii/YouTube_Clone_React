@@ -24,14 +24,16 @@ class App extends Component {
             comments:[]
         }
     }
+    
+    componentDidMount() {
+        this.getComments()
+    }
 
     async startVideo(event, video){
         if (video.id.kind === "youtube#video"){
             let comments = await this.getComments(video.id.videoId)
             let related = this.getRelatedVideos(video.id.videoId)
             this.setState({videoTitle:video.snippet.title, videoDescription: video.snippet.description, comments:comments})
-            console.log('VIDEO INFO', this.state.videoTitle, this.state.videoDescription)
-            
         }
         else{
             console.log("please don't see me")
@@ -43,8 +45,11 @@ class App extends Component {
         try{
             let comments= await axios.get('http://127.0.0.1:8000/'+videoId)
             comments = comments.data
+            this.setState({
+                comments: comments
+            })
+            console.log('get comments in app', comments)
             return(comments)
-            
         }
         catch(e){
             console.log(e)
@@ -89,7 +94,6 @@ class App extends Component {
         
 
         if(this.state.renderType === 'video') {
-           
             if (this.state.comments.length>0){
                 return (
                     <div className="container-fluid">
@@ -101,7 +105,7 @@ class App extends Component {
                                 <div className="video-player-container">
                                     <VideoPlayer video={this.state.videoId} videoTitle={this.state.videoTitle} videoDescription={this.state.videoDescription} />
                                     
-                                    <CommentSection videoId = {this.state.videoId} comments={this.state.comments} getComments={this.getComments}/>
+                                    <CommentSection videoId = {this.state.videoId} comments={this.state.comments} getComments={this.getComments} />
                                 </div>
                             </div>
                             <div className="col-1"></div>

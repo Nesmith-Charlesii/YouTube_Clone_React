@@ -15,3 +15,17 @@
 .related-video-thumbnail img{
     border-radius: 10px;
 }
+
+img:hover {
+    border: 1px solid white;
+    animation-name: imgHover;
+    animation-duration: 700ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes imgHover {
+    100%{
+        border: 1px solid rgb(85, 45, 255);
+    }
+}
